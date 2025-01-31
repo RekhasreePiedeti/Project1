@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviewer Dashboard</title>
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+    }
+
+    /* Header Section */
+    .header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Logout Button */
+    .logout {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #c0392b;
+    }
+
+    /* Main container */
+    .container {
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      text-shadow: none;
+    }
+
+    /* Buttons */
+    button {
+      width: 80%;
+      padding: 12px 0;
+      margin-bottom: 15px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }Approve
+
+    button:hover {
+      background-color: #45a049;
+    }
+    /* Logout button */
+    .logout {
+      position: fixed;
+      top: 20px;
+      left:800px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: darkred;
+    }
+
+    /* Mobile restriction message */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        max-width: 90%;
+      }
+      
+    }
+    
+  </style>
+  <script>
+        function logout() {
+            // Clear session storage or local storage 
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // Redirect to login page
+            window.location.href = "Login.html"; 
+        }
+        // Prevent the user from going back
+        (function () {
+            function preventBack() {
+                history.pushState(null, "", location.href);
+            }
+
+            window.onload = function () {
+                preventBack();
+
+                // Continuously prevent back navigation
+                window.addEventListener("popstate", function () {
+                    preventBack();
+                });
+
+                // Keep pushing state at regular intervals (optional for extra security)
+                setInterval(preventBack, 100);
+            };
+        })();
+    </script>
+</head>
+<body>
+  <div class="header">Request Files
+  <button class="logout">Logout</button>
+  </div>
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Blockchain Based Document Management System</h2>
+    <button>File 1</button>
+    <button>File 2</button>
+    <button>File 3</button>
+  </div>
+</body>
+</html>

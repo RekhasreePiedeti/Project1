@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Create User</title>
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92, #2a3d66, #1d2b64);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header section */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Logout button */
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            width: 600px;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Create user button */
+        .create-user-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .create-user-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            font-size: 25px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: rgb(255, 255, 255);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Action icons */
+        .action-icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .action-icons button:hover {
+            color: #ffffff;
+        }
+
+        /* Mobile restriction message */
+        @media (max-width: 1024px) {
+            body {
+                justify-content: center;
+                align-items: center;
+                background: black;
+            }
+            .container, .header, .logout-btn {
+                display: none;
+            }
+            .mobile-restriction {
+                display: block;
+                color: white;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-restriction {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        function logout() {
+            // Clear session storage or local storage (if used for login state)
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // Redirect to login page
+            window.location.href = "Login.html"; // Change to your actual login page URL
+        }
+        // Prevent the user from going back
+        function preventBack() {
+            window.history.pushState(null, "", window.location.href);
+        }
+
+     (function () {
+            function preventBack() {
+                history.pushState(null, "", location.href);
+            }
+
+            window.onload = function () {
+                preventBack();
+
+                // Continuously prevent back navigation
+                window.addEventListener("popstate", function () {
+                    preventBack();
+                });
+
+                // Keep pushing state at regular intervals (optional for extra security)
+                setInterval(preventBack, 100);
+            };
+        })();
+    </script>
+</head>
+<body>
+    <h2 class="header">Admin Page</h2>
+    <button class="logout-btn">Logout</button>
+
+    <div class="container">
+        <h2 class="title">Blockchain Based Document Management System</h2>
+            <button class="create-user-btn" onclick="create_user_page()">+ Create a New User</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user1</td>
+                    <td class="action-icons">
+                        <button title="Edit" onclick="edit_page()">✎</button>
+                        <button title="Delete" onclick="delete_page()">🗑</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user2</td>
+                    <td class="action-icons">
+                        <button title="Edit" onclick="edit_page()">✎</button>
+                        <button title="Delete" onclick="delete_page()">🗑</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user3</td>
+                    <td class="action-icons">
+                        <button title="Edit" onclick="edit_page()">✎</button>
+                        <button title="Delete" onclick="delete_page()">🗑</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user4</td>
+                    <td class="action-icons">
+                        <button title="Edit" onclick="edit_page()">✎</button>
+                        <button title="Delete" onclick="delete_page()">🗑</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user5</td>
+                    <td class="action-icons">
+                        <button title="Edit" onclick="edit_page()">✎</button>
+                        <button title="Delete" onclick="delete_page()">🗑</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mobile-restriction">
+        This webpage is only compatible with desktop screens. Please access it on a larger device.
+    </div>
+    <script src="Admin_page_script.js"></script>
+</body>
+</html>

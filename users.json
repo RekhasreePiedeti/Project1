@@ -1,0 +1,11 @@
+{
+    "users":[
+        {"username":"admin", "password":"password","role":"admin"},
+        {"username":"creator1", "password":"password","role":"creator"},
+        {"username":"creator2", "password":"password","role":"creator"},
+        {"username":"reviewer1", "password":"password","role":"reviewer"},
+        {"username":"reviewer2", "password":"password","role":"reviewer"},
+        {"username":"reviewer3", "password":"password","role":"reviewer"},
+        {"username":"approver", "password":"password","role":"approver"}
+    ]
+}

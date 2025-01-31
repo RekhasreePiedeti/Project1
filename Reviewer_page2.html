@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Review</title>
+  <style>
+    /* Base styles */
+    html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92, #2a3d66, #1d2b64);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+    /* Main container */
+    .container {
+            width: 600px;
+            background-color: rgba(255, 255, 255, 0.1);
+            /*backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;*/
+            text-align: center;
+        }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      /*text-align: center;
+      padding:
+      margin-bottom: 15px;
+      color:rgb(255, 255, 255);*/
+    }
+
+    .file p {
+      color:rgb(0, 0, 0);
+      background:rgb(255, 255, 255);
+      padding: 8px;
+      border-radius: 5px;
+      border-left: 4px solid #007BFF;
+      margin-bottom: 10px;
+    }
+
+    /* Feedback Section */
+    .feedback {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+    }
+
+    .feedback label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .text-area {
+      width: 100%;
+      height: 60px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      resize: none;
+    }
+
+    /* Radio Buttons */
+    .radio-group {
+      margin-top: 20px;
+      margin-bottom :20px;
+      margin-right:155px;
+      margin-left:155px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .radio {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .radio input {
+      margin-right: 10px;
+    }
+    .header {
+            position: fixed;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .logout {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: darkred;
+        }
+        /*Submit button*/
+        .save {
+          padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .save:hover {
+          background-color:rgba(7, 30, 239, 0.8);
+        }
+    /* Mobile Friendly */
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+  <script>
+     function logout() {
+            // Clear session storage or local storage 
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // Redirect to login page
+            window.location.href = "Login.html"; 
+        }
+  (function () {
+            function preventBack() {
+                history.pushState(null, "", location.href);
+            }
+
+            window.onload = function () {
+                preventBack();
+
+                // Continuously prevent back navigation
+                window.addEventListener("popstate", function () {
+                    preventBack();
+                });
+
+                // Keep pushing state at regular intervals (optional for extra security)
+                setInterval(preventBack, 100);
+            };
+        })();
+      </script>
+</head>
+<body>
+  <div class="header">Review the page</div>
+  <button class="logout">Logout</button>
+<div class="container">
+  <h2 class="title">Blockchain Based Document Management System</h2><br>
+
+  <!-- File Content -->
+  <div class="file">
+    <p>Some content of the file.</p>
+    <p>Some content of the file.</p>
+    <p>Some content of the file.</p>
+  </div>
+
+  <!-- Feedback Section -->
+  <div class="feedback">
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback" class="text-area" placeholder="Write your feedback here..."></textarea>
+  </div>
+
+  <!-- Approval Radio Buttons -->
+  <div class="radio-group">
+    <label class="radio">
+      <input type="radio" name="approval" id="approve">
+      Ok
+    </label>
+
+    <label class="radio">
+      <input type="radio" name="approval" id="not-approve">
+      Revert
+    </label>
+  </div>
+  <div>
+    <button type="submit" class="save">Submit</button>
+  </div>
+</div>
+
+</body>
+</html>

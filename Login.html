@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document Management System</title>
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92, #2a3d66, #1d2b64);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container for the entire content */
+        .container {
+            width: 600px;
+            background-color: rgba(255, 255, 255, 0.1);
+            /*backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 40px;*/
+            text-align: center;
+        }
+
+        /* Title above the form */
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Login box styles */
+        .login-box {
+            background-color: rgba(202, 196, 233, 0.9);
+            border-radius: 10px;
+            padding: 20px 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h1 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Input field styles */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            color: #000428;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 20px);
+        }
+
+        /* Button styles */
+        .login-button {
+            background-color: #004e92;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .login-button:hover {
+            background-color: #007bff;
+        }
+
+        /* Forgot password link */
+        .forgot-password {
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: #004e92;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Title at the top */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Restriction message for mobile devices */
+        @media (max-width: 1024px) {
+            body {
+                justify-content: center;
+                align-items: center;
+                background: black;
+            }
+            .container {
+                display: none;
+            }
+            .mobile-restriction {
+                display: block;
+                color: white;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-restriction {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="title">Blockchain Based Document Management System</h2>
+        <div class="login-box">
+            <h1>Login</h1>
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-restriction">
+        This webpage is only compatible with desktop screens. Please access it on a larger device.
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

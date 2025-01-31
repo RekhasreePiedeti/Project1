@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document Management System</title>
+    <style>
+        /* Base styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92, #2a3d66, #1d2b64);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Logout button */
+        .logout {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: darkred;
+        }
+
+        .Upload {
+            padding: 10px 20px;
+            background-color:red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        .Upload:hover {
+            background-color: darkred;
+        }
+
+        /* Main container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 70px;
+            text-align: center;
+            width: 500px;
+            height:300px;
+        }
+
+        /* Title */
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Input field */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 40px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color:rgba(7, 30, 239, 0.8);
+        }
+
+        /* Mobile restriction message */
+        @media (max-width: 1024px) {
+            body {
+                justify-content: center;
+                align-items: center;
+                background: black;
+            }
+            .container, .header, .logout {
+                display: none;
+            }
+            .mobile-restriction {
+                display: block;
+                color: white;
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .mobile-restriction {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        function logout() {
+            // Clear session storage or local storage 
+            sessionStorage.clear();
+            localStorage.clear();
+
+            // Redirect to login page
+            window.location.href = "Login.html"; 
+        }
+        // Prevent the user from going back
+       (function () {
+            function preventBack() {
+                history.pushState(null, "", location.href);
+            }
+
+            window.onload = function () {
+                preventBack();
+
+                // Continuously prevent back navigation
+                window.addEventListener("popstate", function () {
+                    preventBack();
+                });
+
+                // Keep pushing state at regular intervals (optional for extra security)
+                setInterval(preventBack, 100);
+            };
+        })();
+    </script>
+</head>
+<body>
+    <div class="header">Creator Page</div>
+    <button class="logout">Logout</button>
+
+    <div class="container">
+        <h1>Blockchain Based Document Management System</h1>
+        <br>
+        <input type="file" font-size=1.5rem></input><br><br>
+        <button class="Upload" method = "POST" enctype = "multipart/form-data" onclick = "upload_page()">Upload</button><br>
+            <br>
+        <button onclick = "submit_page()">Submit</button>
+    </div>
+
+    <div class="mobile-restriction">
+        This webpage is only compatible with desktop screens. Please access it on a larger device.
+    </div>
+    <script src="Creator_page.js"></script>
+</body>
+</html>
